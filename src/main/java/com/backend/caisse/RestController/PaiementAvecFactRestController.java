@@ -24,7 +24,7 @@ public class PaiementAvecFactRestController {
     PaiementAFactureService paiementAvecFactureService;
 
     @RequestMapping(path = "/annuler", method = RequestMethod.PUT)
-    public ResponseEntity<Object> annulerPaiementListFactures(@RequestBody List<Facture> factures) {
+    public ResponseEntity<Object> annulerPaiementFactures(@RequestBody List<Facture> factures) {
 
         try {
             return new ResponseEntity<Object>(paiementAvecFactureService.AnnulerPaiementFactures3(factures),
@@ -39,24 +39,19 @@ public class PaiementAvecFactRestController {
 
     @RequestMapping(path = "/payer", method = RequestMethod.PUT)
     public ResponseEntity<Object> PaiementFactures(@RequestBody List<Facture> factures) {
-
+      
         try {
             return new ResponseEntity<Object>(paiementAvecFactureService.modifierFactures(factures), HttpStatus.OK);
         } catch (Exception e) {
 
             return new ResponseEntity<Object>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
     @RequestMapping(path = "/paiementAgent", method = RequestMethod.POST)
-    public ResponseEntity<Object> PaiementAgent(@RequestBody List<PaiementAvecFacture> paiement) {
-        try {
-            return new ResponseEntity<Object>(paiementAvecFactureService.payerFactureAgent(paiement), HttpStatus.OK);
-        } catch (Exception e) {
-
-            return new ResponseEntity<Object>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public void PaiementAgent(@RequestBody List<PaiementAvecFacture> paiement) {
+     paiementAvecFactureService.payerFactureAgent(paiement);
+      
     }
     
     @RequestMapping(path = "/ajouterPaiement", method = RequestMethod.POST)

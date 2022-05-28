@@ -1,4 +1,5 @@
 package com.backend.caisse.serviceImp;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -113,29 +114,34 @@ public class PaiementAvecFactServiceImpl implements PaiementAFactureService {
 
     @Override
     public PaiementAvecFacture modifierFactures(List<Facture> factures) {
-
+//
         PaiementAvecFacture paiement = new PaiementAvecFacture();
 
         for (Facture f : factures) {
-            paiement = f.getPaiement();
+            paiement=f.getPaiement();
             factureService.modifierFacture(paiement, f.getReferenceFact());
 
         }
 
-        return paiement;
+    return paiement;
     }
 
     @Override
-    public PaiementAvecFacture payerFactureAgent(List<PaiementAvecFacture> paiements) {
-     for(PaiementAvecFacture paie :paiements)
-     {
-        List<Facture> facts=paie.getFactures(); 
-       Encaissement encai=encaissementService.ajouterEncaissement(new Encaissement(new Date(), 100));
-        paiementAvecFactureRepository.save(new PaiementAvecFacture( new Date(), paie.getModePaiement(), encai, paie.getAgent()));
-      
-         this.modifierFactures(facts);
+    public void payerFactureAgent(List<PaiementAvecFacture> paiements) {
+        List<Facture> facts = new ArrayList<>();
+        for (PaiementAvecFacture paie : paiements) {
+             facts = paie.getFactures();
+            // Encaissement encai=encaissementService.ajouterEncaissement(new
+            // Encaissement(new Date(), 100));
+            // paiementAvecFactureRepository.save(new PaiementAvecFacture( paie.getDateP(),
+            // paie.getModePaiement(), null, paie.getAgent()));
+            PaiementAvecFacture p = paiementAvecFactureRepository.save(paie);
+          /*  for (Facture f : facts) {
+                f.setPaiement(p);
+            }*/
+//this.modifierFactures(facts);
+        }
+       
     }
-    return null;
-    }
-    
+
 }

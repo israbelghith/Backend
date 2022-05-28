@@ -16,5 +16,5 @@ public interface PaiementAFactureService {
   
     PaiementAvecFacture modifierFactures(List<Facture> factures);
     
-    PaiementAvecFacture payerFactureAgent(List<PaiementAvecFacture> paiement);
+    void payerFactureAgent(List<PaiementAvecFacture> paiement);
 }
