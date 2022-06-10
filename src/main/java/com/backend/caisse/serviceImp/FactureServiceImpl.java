@@ -1,5 +1,5 @@
 package com.backend.caisse.serviceImp;
-
+import java.util.ArrayList;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -33,8 +33,10 @@ public class FactureServiceImpl implements FactureService {
 
     @Override
     public void modifierFacture(Paiement paiement, Long ref) {
-        factureRepository.updateFacturePayer(paiement,ref);
-
+      
+        factureRepository.updateFacturePayer(paiement, ref);
+       
+         
     }
 
     @Override

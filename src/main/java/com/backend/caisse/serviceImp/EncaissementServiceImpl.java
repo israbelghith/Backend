@@ -48,7 +48,7 @@ public class EncaissementServiceImpl implements EncaissementService{
     @Override
     public Encaissement ajouterEncaissement(Encaissement encaissement) {
         SessionCaisse sessionCaisse=encaissement.getSession();
-     //   sessionService.modifierSessionParMontantEtNbFacture(encaissement.getMontantE(),sessionCaisse.getNbFacture(),sessionCaisse.getNumS());
+        sessionService.modifierSessionParMontantEtNbFacture(sessionCaisse);//encaissement.getMontantE(),sessionCaisse.getNbFacture(),sessionCaisse.getNumS());
 
        return encaissementRepository.save(encaissement);
     }

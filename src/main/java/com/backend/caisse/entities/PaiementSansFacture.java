@@ -1,4 +1,6 @@
 package com.backend.caisse.entities;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
@@ -17,7 +19,13 @@ import lombok.Setter;
 @Setter
 @Entity
 public class PaiementSansFacture extends Paiement{
-    
+    public PaiementSansFacture(Long idP, Date dateP,String modePaiement,String etat,Encaissement encaissement,Agent agent,Client client){
+        super(idP, dateP, modePaiement, etat, encaissement,agent);
+      this.cli=client;
+    }
+    public PaiementSansFacture(Long idP, Date dateP,String modePaiement,String etat,Encaissement encaissement,Client client){
+      
+    }
     @ManyToOne
     private Client cli;
 }

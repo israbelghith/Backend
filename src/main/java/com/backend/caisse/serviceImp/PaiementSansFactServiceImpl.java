@@ -1,5 +1,6 @@
 package com.backend.caisse.serviceImp;
 
+import com.backend.caisse.entities.Client;
 import com.backend.caisse.entities.PaiementSansFacture;
 import com.backend.caisse.repos.PaiementSansFactureRepos;
 import com.backend.caisse.service.PaiementSFactureService;
@@ -15,7 +16,7 @@ public class PaiementSansFactServiceImpl implements PaiementSFactureService {
 
     @Override
     public PaiementSansFacture saisirAvance(PaiementSansFacture p) {
-        p.setEtat("prépayé");
+      System.out.println("///////////// le client a insérer "+ p.getCli());
         return paiementSansFactureRepos.save(p);
     }
     

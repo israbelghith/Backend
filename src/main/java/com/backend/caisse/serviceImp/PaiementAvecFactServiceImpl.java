@@ -116,10 +116,11 @@ public class PaiementAvecFactServiceImpl implements PaiementAFactureService {
     public PaiementAvecFacture modifierFactures(List<Facture> factures) {
 //
         PaiementAvecFacture paiement = new PaiementAvecFacture();
-
+      //  List<Facture> returnFact= new ArrayList <>(); 
         for (Facture f : factures) {
             paiement=f.getPaiement();
-            factureService.modifierFacture(paiement, f.getReferenceFact());
+        //  returnFact= 
+           factureService.modifierFacture(paiement, f.getReferenceFact());
 
         }
 
